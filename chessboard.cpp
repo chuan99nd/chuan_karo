@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 #define forIJ(i, j, N) for(int i = 0; i < N; ++i)for(int j = 0; j < N; ++j)
 #define forI(i, N) for(int i = 0; i < N; ++i)
-using namespace std;
 
+using namespace std;
+typedef pair<int, int> Point;
 // Default 0 empty
 //         1 first player
 //         2 second player
@@ -17,6 +18,7 @@ class ChessBoard {
     // direction --, |, \, /
     int dx[4] = {1, 0, 1, -1};
     int dy[4] = {0, 1, 1, 1};
+    ChessBoard() {};
     ChessBoard(int n) {
         N = n;
         forIJ(i, j, N) {
@@ -83,6 +85,19 @@ class ChessBoard {
             }
         }
         return false;
+    }
+
+    void reset(){
+        forIJ(i, j, N) {
+            board[i][j] = 0;
+        };
+    }
+
+    bool checkValidPoint(int x, int y) {
+        if (board[x][y] != 0) return false;
+        if (x < 0 || x >= N) return false;
+        if (y < 0 || y >= N) return false;
+        return true;
     }
 };
 
@@ -173,8 +188,9 @@ ChessBoard getBoard8(){
     board.board[5][3] = 1;
     return board;
 }
-int main(){
-    ChessBoard board = getBoard8();
-    board.showBoard();
-    cout << board.checkWin(1);
-}
+
+// int main(){
+//     ChessBoard board = getBoard8();
+//     board.showBoard();
+//     cout << board.checkWin(1);
+// }

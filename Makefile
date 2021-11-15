@@ -1,2 +1,2 @@
 run:
-	g++ chessboard.cpp && ./a.out && printf "\n"
+	g++ play.cpp && ./a.out && printf "\n"
